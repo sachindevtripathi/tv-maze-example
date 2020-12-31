@@ -12,7 +12,7 @@ function MovieDetail(props){
                     <img src={props.show.image ? props.show.image.medium : ''} alt=""  height="50px" width="50px" /> 
                 </div>            
                 <span className="list-title"> {props.show.name}</span>
-                <button className="btn btn-dark float-right" onClick={()=>{setIsExpended(!isExpanded)}}><icon>+</icon></button>
+                <button className="btn btn-dark float-right" onClick={()=>{setIsExpended(!isExpanded)}}><span>+</span></button>
             </div>
            
             <div style={{display: !isExpanded? 'none': 'block'}}>  
@@ -27,22 +27,16 @@ function MovieDetail(props){
                 <div className="float-none ml-1">
                     <div className="list-title">  <label className="px-2">Movie name: </label> {props.show.name}</div>                   
                     <div className="list-title">  <label className="px-2">Status: </label>  {props.show.status}</div>
-                    <div className="list-title">  <label className="px-2">Type: </label> {props.show.type}</div>
-                    <div className="list-title">  <label className="px-2">URL: </label> {props.show.url}</div>
-                    <div className="list-title">  <label className="px-2">Official Site: </label> {props.show.officialSite}</div>
+                    <div className="list-title">  <label className="px-2">Type: </label> {props.show.type}</div>   
+                    <div className="list-title">  <label className="px-2">URL: </label> <a href={props.show.url} target="_blank">{props.show.url}</a> </div>              
                     <div className="list-title">  <label className="px-2">Language: </label> {props.show.language}</div>
                     <div className="list-title">  <label className="px-2">Genres: </label> {props.show.genres}</div>
                     <div className="list-title">  <label className="px-2">Premiered: </label> {props.show.premiered}</div>
-                    <div className="list-title">  <label className="px-2">Rating: </label> {props.show.rating.average}</div> 
-                                       
+                    <div className="list-title">  <label className="px-2">Rating: </label> {props.show.rating.average}</div>
+                    <div className="list-title">  <label className="px-2">Official Site: </label><a href={props.show.officialSite} target="_blank">{props.show.officialSite}</a></div>                                   
                 </div>     
-                <div className="d-inline float-right" dangerouslySetInnerHTML={{__html:props.show.summary}}></div>  
-                 
-                   
-                
+                <div className="d-inline float-left" dangerouslySetInnerHTML={{__html:props.show.summary}}></div>  
             </div>
-           
-           
         </li>
     )
 }

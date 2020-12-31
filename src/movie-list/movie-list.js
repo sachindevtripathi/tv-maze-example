@@ -9,20 +9,17 @@ const API_BASE = "https://api.tvmaze.com/search/shows?q="
 class MovieList extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             list: []
         };
         this.myInputRef = React.createRef();
     }
-
     componentDidMount(){
         axios.get(API_URL).then(response => {
             console.log("Post request ex", response.data);
             this.setState({list: response.data});            
         });
     }
-
     onSearchBtnClick () {
         let value = this.myInputRef.current.value;
         console.log(value);
@@ -33,20 +30,19 @@ class MovieList extends React.Component {
             });
         }
     }
-
     render() {
         return (
             <div className="container-fluid">
-                <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label>Enter a movie keyword: &nbsp;<input className="" ref={this.myInputRef} /> </label> 
-                           
+                <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+                    <form className="form-inline">
+                        <div className="form-group">
+                            <label>Enter a movie keyword(minimum 1 word): &nbsp;<input className="" ref={this.myInputRef} /> </label> 
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <button type="button" className="btn btn-primary btn-sm" onClick={()=> this.onSearchBtnClick()}>Search</button>
                         </div>
                     </form>
+                    <label>Current search={this.myInputRef.current && this.myInputRef.current.value}</label>
                 </nav>
                
                 <ul className="list-group">
@@ -56,9 +52,7 @@ class MovieList extends React.Component {
                     }) }
                 </ul>
             </div>
-            
           );
     }
 }
-
 export default MovieList;
